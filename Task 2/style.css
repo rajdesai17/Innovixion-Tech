@@ -1,0 +1,42 @@
+/* CSS for the countdown timer container */
+#countdown-container {
+    width: 300px;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS for the timer display */
+#timer {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* CSS for the form */
+#countdownForm {
+    text-align: center;
+}
+
+#countdownForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#countdownForm input {
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#countdownForm button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}

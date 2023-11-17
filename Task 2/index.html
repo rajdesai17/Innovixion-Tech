@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link
+ 
+rel="stylesheet"
+ 
+href="style.css">
+
+</head>
+<body>
+    <div id="timer"></div>
+
+    <form id="countdownForm">
+        <label for="targetDate">Target Date:</label>
+        <input type="date" id="targetDate" name="targetDate" required>
+        <button type="submit">Start Countdown</button>
+    </form>
+
+    <script>
+        let interval; // Declare the interval variable globally
+
+        const form = document.getElementById('countdownForm');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission from refreshing the page
+
+            const targetDateInput = document.getElementById('targetDate');
+            const targetDate = new Date(targetDateInput.value);
+
+            // Clear any existing interval before starting a new one
+            clearInterval(interval);
+
+            // Create a new interval function
+            interval = setInterval(() => {
+                const timeRemaining = targetDate.getTime() - Date.now();
+
+                if (timeRemaining <= 0) {
+                    // Countdown has ended
+                    clearInterval(interval);
+                    document.querySelector('#timer').textContent = 'Countdown has ended!';
+                    return;
+                }
+
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                document.querySelector('#timer').textContent = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds remaining`;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
